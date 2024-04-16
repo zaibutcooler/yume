@@ -2,13 +2,13 @@ import unittest
 
 
 class TestTokenizer(unittest.TestCase):
-    def test_encode():
+    def test_encode(self):
         pass
 
-    def test_decode():
+    def test_decode(self):
         pass
 
-    def test_equal_result():
+    def test_equal_result(self):
         pass
 
 

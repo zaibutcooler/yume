@@ -2,10 +2,10 @@ import unittest
 
 
 class TestTransformer(unittest.TestCase):
-    def test_loading_model():
+    def test_loading_model(self):
         pass
 
-    def test_parameters():
+    def test_parameters(self):
         pass
 
 

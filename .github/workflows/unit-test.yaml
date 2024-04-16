@@ -10,18 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
 
       - name: Install dependencies
-        run: |
-          pip install -r ./requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          python -m unittest ./tests
+        run: python -m unittest discover tests

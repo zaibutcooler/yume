@@ -1,3 +1,13 @@
+---
+title: {{title}}
+emoji: {{emoji}}
+colorFrom: {{colorFrom}}
+colorTo: {{colorTo}}
+sdk: {{sdk}}
+sdk_version: {{sdkVersion}}
+app_file: app.py
+pinned: false
+---
 # Yume: Image Generation with Diffusion model using PyTorch
 
 ## Overview
@@ -68,5 +78,5 @@ Mention any contributors or libraries that you used or were inspired by.
 ## Contact
 
 - Zai
-- zaiyellyintaung@gmail.com
+- <zaiyellyintaung@gmail.com>
 - Project Link: [https://github.com/zaibutcooler/yume](https://github.com/zaibutcooler/yume)

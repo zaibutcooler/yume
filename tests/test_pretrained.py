@@ -2,10 +2,10 @@ import unittest
 
 
 class TestPretrained(unittest.TestCase):
-    def test_download():
+    def test_download(self):
         pass
 
-    def test_generation():
+    def test_generation(self):
         pass
 
 

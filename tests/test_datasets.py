@@ -2,10 +2,10 @@ import unittest
 
 
 class TestDatasets(unittest.TestCase):
-    def test_download():
+    def test_download(self):
         pass
 
-    def test_encode():
+    def test_encode(self):
         pass
 
 
