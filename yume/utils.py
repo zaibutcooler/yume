@@ -1,8 +1,18 @@
+from .tokenizer import Tokenizer
+
+
+# TODO setup utils
 def encode(text):
-    pass
+    tokenizer = Tokenizer()
+    result = tokenizer.encode(text)
+    return result
 
-def decode(text):
-    pass
 
-def transform_data(data):
+def decode(tensor):
+    tokenizer = Tokenizer()
+    result = tokenizer.decode(tensor)
+    return result
+
+
+def load_data(data):
     pass

@@ -6,6 +6,7 @@ from .models import GPT
 
 config = Config()
 
+
 class Yume:
     def __init__(self, config):
         super().__init__()
