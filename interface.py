@@ -5,8 +5,7 @@ from torchvision.transforms import ToPILImage
 
 
 def main():
-    st.title("Image Generation")
-    st.write("Made with GANS from scratch")
+    st.title("夢を見ている")
 
 
 if __name__ == "__main__":
