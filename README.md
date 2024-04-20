@@ -1,12 +1,13 @@
 ---
-title: {{title}}
-emoji: {{emoji}}
-colorFrom: {{colorFrom}}
-colorTo: {{colorTo}}
-sdk: {{sdk}}
-sdk_version: {{sdkVersion}}
-app_file: app.py
+title: Yume
+emoji: ✨
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.29.0
+app_file: interface.py
 pinned: false
+license: openrail
 ---
 
 # Yume: Image Generation with Diffusion model using PyTorch
