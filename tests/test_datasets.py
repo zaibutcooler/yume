@@ -1,4 +1,5 @@
 import unittest
+import yume
 
 
 class TestDatasets(unittest.TestCase):

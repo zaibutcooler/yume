@@ -1,4 +1,4 @@
-from .yume import Yume
+from yume import Yume
 
 yume = Yume()
 
