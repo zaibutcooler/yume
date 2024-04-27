@@ -1,16 +1,17 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-from config import Config
+from .config import Config
 from .models import GPT
 
 config = Config()
 
 
 class Yume:
-    def __init__(self, config):
+    def __init__(self, config=config):
         super().__init__()
         self.model = GPT(config=config)
+        self.config = config
 
     def train(self):
         pass
