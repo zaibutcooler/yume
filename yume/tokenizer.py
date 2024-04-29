@@ -13,3 +13,6 @@ class Tokenizer:
     def decode(self, tensors):
         result = ""
         return tensors
+
+    def load_pretrained(self):
+        pass

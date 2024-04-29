@@ -1,15 +1,3 @@
----
-title: Yume
-emoji: ✨
-colorFrom: blue
-colorTo: green
-sdk: streamlit
-sdk_version: 1.29.0
-app_file: interface.py
-pinned: false
-license: openrail
----
-
 # Yume: Image Generation with Diffusion model using PyTorch
 
 ## Overview
@@ -76,6 +64,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 Mention any contributors or libraries that you used or were inspired by.
+
+---
+
+title: Yume
+emoji: ✨
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.29.0
+app_file: interface.py
+pinned: false
+license: openrail
+---
 
 ## Contact
 

@@ -1,6 +1,14 @@
 from .tokenizer import Tokenizer
 
 
+def dummy_logger(text):
+    pass
+
+
+def training_logger(text):
+    pass
+
+
 # TODO setup utils
 def encode(text):
     tokenizer = Tokenizer()

@@ -1,18 +1,17 @@
 import streamlit as st
 
+
 def main():
-    st.set_page_config(
-        page_title="夢を見ている",
-        page_icon="🌙",
-        layout="wide"
-    )
+    st.set_page_config(page_title="夢を見ている", page_icon="🌙", layout="wide")
 
     st.title("夢を見ている")
     st.write("Welcome to our Dream Writer! 🌙")
 
     # Add a sidebar with options
     st.sidebar.header("Select a Dream Theme")
-    theme = st.sidebar.selectbox("Choose a theme", ["Fantasy", "Adventure", "Romance", "Horror"])
+    theme = st.sidebar.selectbox(
+        "Choose a theme", ["Fantasy", "Adventure", "Romance", "Horror"]
+    )
 
     st.sidebar.header("Customize Your Dream")
     prompt = st.sidebar.text_input("Enter a prompt or keyword")
@@ -24,7 +23,6 @@ def main():
     # Create a main area to display the generated text
     st.header("Your Dream")
 
-
     if generate_button:
         # Add a loading animation
         with st.spinner("Generating dream..."):
@@ -35,12 +33,16 @@ def main():
             # Display the generated text
             st.text_area("", value=dream_text, height=600)
     else:
-        text_area = st.text_area("", height=600, placeholder="Your dream will appear here...")
+        text_area = st.text_area(
+            "", height=600, placeholder="Your dream will appear here..."
+        )
+
 
 def generate_dream_text(theme, prompt, num_sentences):
     # Implement your LLM model here to generate text
     # For demonstration purposes, return a dummy text
     return "This is a dummy dream text. Please implement your LLM model to generate actual text."
+
 
 if __name__ == "__main__":
     main()

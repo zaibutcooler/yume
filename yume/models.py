@@ -3,10 +3,11 @@ from torch import nn
 import torch.nn.functional as F
 from .config import Config
 from .utils import encode, decode
+from huggingface_hub import PyTorchModelHubMixin
 
 
 # TODO setup models
-class SelfAttention(nn.Module):
+class SelfAttention(nn.Module, PyTorchModelHubMixin):
     def __init__(self, config: Config) -> None:
         super().__init__()
 
@@ -14,7 +15,7 @@ class SelfAttention(nn.Module):
         pass
 
 
-class MLP(nn.Module):
+class MLP(nn.Module, PyTorchModelHubMixin):
     def __init__(self, config: Config) -> None:
         super().__init__()
 
@@ -22,7 +23,7 @@ class MLP(nn.Module):
         pass
 
 
-class Block(nn.Module):
+class Block(nn.Module, PyTorchModelHubMixin):
     def __init__(self, config: Config) -> None:
         super().__init__()
 
@@ -30,7 +31,7 @@ class Block(nn.Module):
         pass
 
 
-class GPT(nn.Module):
+class GPT(nn.Module, PyTorchModelHubMixin):
     def __init__(self, config: Config):
         super().__init__()
 
