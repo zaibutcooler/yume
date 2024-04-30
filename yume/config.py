@@ -9,6 +9,7 @@ class Config:
         n_embd=768,
         dropout=0.0,
         bias=True,
+        lr=0.001
     ) -> None:
         self.num_epoch = num_epoch
         self.block_sized = 1024
@@ -18,3 +19,4 @@ class Config:
         self.n_embdd = 768
         self.dropout = 0.0
         self.bias = True
+        self.lr = lr

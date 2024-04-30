@@ -1,19 +1,39 @@
 from torch.utils.data import Dataset
 from datasets import load_dataset
 from .tokenizer import Tokenizer
+from .utils import dummy_logger
+
+import tiktoken
 
 
 # TODO setup dataset
 class Trainset(Dataset):
     def __init__(self, batch_size=48):
-        self.loaded_data = load_dataset("zaibutcooler/animanga-vault")
-        self.texts = self.loaded_data["train"]["raw"]
-        self.data = self.loaded_data["train"]["data"]
-        self.tokenizer = Tokenizer()
-        self.tokenizer.load_pretrained()
+        self.texts = None
+        self.data = []
 
     def __len__(self):
         return len(self.data)
-
+    
     def __getitem__(self, index):
+        assert len(self.data) > 10
         return []
+
+
+    def _load_dataset(self,url="zaibutcooler/animanga-vault"):
+        loaded_dataset = load_dataset(url)
+        self.texts = self.loaded_data["train"]["raw"]
+        self.data = self.loaded_data["train"]["data"]
+        dummy_logger("Successfully loaded the dataset")
+    
+    def _tokenize(self,tiktoken=True):
+        if tiktoken:
+            enc = tiktoken.get_encoding("cl100k_base")
+            assert enc.decode(enc.encode("hello world")) == "hello world"
+
+            enc = tiktoken.encoding_for_model("gpt-4")
+            self.tokenizer = enc
+        else:
+            self.tokenizer = Tokenizer()
+            self.tokenizer.load_pretrained()
+        
