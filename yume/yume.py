@@ -18,17 +18,16 @@ class Yume:
 
     def generate(self):
         pass
-    
+
     def sample(self):
         pass
 
-    def pretrain(self,tokens):
+    def pretrain(self, tokens):
         lr = self.config.lr
         num_epochs = self.config.num_epoch
-        
-        
+
         pass
-    
+
     def fine_tune(self):
         pass
 
@@ -38,7 +37,7 @@ class Yume:
             n_params -= self.transformer.wpe.weight.numel()
         dummy_logger(f"parameter count -> {n_params}")
         return n_params
-    
+
     def save_pretrained(self, name="yume"):
         self.model.save_pretrained(name)
         self.model.push_to_hub(name)

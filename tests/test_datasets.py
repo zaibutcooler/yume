@@ -1,5 +1,5 @@
 import unittest
-from yume.dataset import Trainset 
+from yume.dataset import Trainset
 
 
 class TestDatasets(unittest.TestCase):
@@ -18,6 +18,7 @@ class TestDatasets(unittest.TestCase):
         assert len(trainset.data) > 1
         encoded_text = trainset.tokenizer.encode(dummy_text)
         assert trainset.tokenizer.decode(encoded_text) == dummy_text
+
 
 if __name__ == "__main__":
     unittest.main()

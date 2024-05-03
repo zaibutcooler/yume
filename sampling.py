@@ -1,4 +1,4 @@
-from .yume import Yume,Config
+from .yume import Yume, Config
 
 config = Config()
 

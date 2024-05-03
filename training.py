@@ -1,4 +1,4 @@
-from .yume import Yume,Trainset,Config
+from .yume import Yume, Trainset, Config
 
 config = Config()
 
@@ -16,6 +16,6 @@ yume.pretrain(dataset.data)
 
 yume.sample()
 
-#optional 
+# optional
 # yume.huggingface_login("your hf tokens")
 # yume.save_pretrained("yume")

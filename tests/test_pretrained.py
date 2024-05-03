@@ -1,5 +1,5 @@
 import unittest
-from yume import Yume,Config
+from yume import Yume, Config
 
 
 class TestPretrained(unittest.TestCase):
@@ -7,7 +7,7 @@ class TestPretrained(unittest.TestCase):
         super().__init__(methodName)
         self.config = Config()
         self.yume = Yume(config=self.config)
-    
+
     def test_download(self):
         self.yume.load_pretrained()
         pass
