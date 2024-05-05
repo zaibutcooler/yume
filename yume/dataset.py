@@ -23,6 +23,7 @@ class Trainset(Dataset):
         loaded_dataset = load_dataset(url)
         self.texts = loaded_dataset["animanga"]["texts"]
         dummy_logger("Successfully loaded the dataset")
+        
 
     def _tokenize(self, tiktoken=True):
         if tiktoken:
@@ -35,3 +36,13 @@ class Trainset(Dataset):
             self.tokenizer = Tokenizer()
             self.tokenizer.load_pretrained()
         self.tokenizer.encode(self.texts)
+        
+    def _prep_bin(self):
+        pass
+    
+    def get_batch(self):
+        pass
+    
+    # from loading to installing in one function
+    def build_dataset(self):
+        pass

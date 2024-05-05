@@ -4,17 +4,15 @@ config = Config()
 
 dataset = Trainset()
 
-dataset._load_dataset()
-
-dataset._tokenize(tiktoken=True)
+dataset.build_dataset()
 
 yume = Yume(config)
 
-assert len(dataset.data) > 0
+# assert len(dataset.data) > 0
 
-yume.pretrain(dataset.data)
+# yume.pretrain(dataset)
 
-yume.sample()
+# yume.sample()
 
 # optional
 # yume.huggingface_login("your hf tokens")

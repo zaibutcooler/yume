@@ -3,9 +3,10 @@ from torch import nn
 import torch.nn.functional as F
 from huggingface_hub import login
 
-from .config import Config
+from .config import Config,yume_small
 from .models import GPT
 from .utils import dummy_logger, training_logger
+from .dataset import Trainset
 
 
 class Yume:
@@ -13,7 +14,7 @@ class Yume:
         assert config is not None
         super().__init__()
         self.gpt = GPT
-        self.model = GPT(config=config)
+        self.model = GPT(config=yume_small)
         self.config = config
 
     def generate(self):
@@ -22,11 +23,13 @@ class Yume:
     def sample(self):
         pass
 
-    def pretrain(self, tokens):
+    def pretrain(self, dataset:Trainset):
         lr = self.config.lr
-        num_epochs = self.config.num_epoch
-
-        pass
+        dataset = Trainset()
+        for epoch in range(self.config.num_epoch):
+            # real trainset
+            pass
+        
 
     def fine_tune(self):
         pass

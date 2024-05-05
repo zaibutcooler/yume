@@ -22,7 +22,7 @@ class Config:
         self.lr = lr
 
 # Small Yume model (around 100M parameters)
-small_yume_config = Config(
+yume_small = Config(
     num_epoch=10,
     block_size=512,
     vocab_size=30522,
@@ -35,7 +35,7 @@ small_yume_config = Config(
 )
 
 # Medium Yume model (around 500M parameters)
-medium_yume_config = Config(
+yume_medium = Config(
     num_epoch=10,
     block_size=1024,
     vocab_size=30522,
@@ -48,7 +48,7 @@ medium_yume_config = Config(
 )
 
 # Large Yume model (around 1B parameters)
-large_yume_config = Config(
+yume_large = Config(
     num_epoch=10,
     block_size=2048,
     vocab_size=30522,
