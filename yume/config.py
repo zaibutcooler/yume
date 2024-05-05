@@ -21,6 +21,7 @@ class Config:
         self.bias = bias
         self.lr = lr
 
+
 # Small Yume model (around 100M parameters)
 yume_small = Config(
     num_epoch=10,

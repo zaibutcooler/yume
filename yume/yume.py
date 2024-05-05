@@ -3,7 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 from huggingface_hub import login
 
-from .config import Config,yume_small
+from .config import Config, yume_small
 from .models import GPT
 from .utils import dummy_logger, training_logger
 from .dataset import Trainset
@@ -23,13 +23,12 @@ class Yume:
     def sample(self):
         pass
 
-    def pretrain(self, dataset:Trainset):
+    def pretrain(self, dataset: Trainset):
         lr = self.config.lr
         dataset = Trainset()
         for epoch in range(self.config.num_epoch):
             # real trainset
             pass
-        
 
     def fine_tune(self):
         pass
