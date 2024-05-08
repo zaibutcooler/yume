@@ -1,3 +1,6 @@
+import torch
+import torch.utils
+
 class Config:
     def __init__(
         self,
@@ -20,7 +23,8 @@ class Config:
         self.dropout = dropout
         self.bias = bias
         self.lr = lr
-
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16'
 
 # Small Yume model (around 100M parameters)
 yume_small = Config(
