@@ -2,7 +2,9 @@ from .tokenizer import Tokenizer
 
 
 def dummy_logger(text):
-    pass
+    print("###################################")
+    print(f"{text}")
+    print("###################################")
 
 
 def training_logger(text):
