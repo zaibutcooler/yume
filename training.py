@@ -8,6 +8,8 @@ dataset.build_dataset()
 
 yume = Yume(config)
 
+
+
 # assert len(dataset.data) > 0
 
 # yume.pretrain(dataset)

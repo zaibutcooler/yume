@@ -8,7 +8,7 @@ from .utils import dummy_logger
 import tiktoken
 
 class Trainset(Dataset):
-    def __init__(self, batch_size=48, dataset_url="zaibutcooler/wiki-japanese"):
+    def __init__(self, batch_size=48, dataset_url="zaibutcooler/japanwiki-vault"):
         self.batch_size = batch_size
         self.dataset_url = dataset_url
         self.tokenizer = None
@@ -17,23 +17,24 @@ class Trainset(Dataset):
 
     def _load_dataset(self):
         loaded_dataset = load_dataset(self.dataset_url)
-        self.texts = loaded_dataset["animanga"]["texts"]
+        self.text = loaded_dataset["train"]["text"]
         dummy_logger("Successfully loaded the dataset")
 
-    def _tokenize(self, tiktoken=True):
-        if tiktoken:
-            enc = tiktoken.get_encoding("cl100k_base")
+    def _tokenize(self, use_tiktoken=True):
+        if use_tiktoken:
+            enc = tiktoken.encoding_for_model("gpt-4")
             self.tokenizer = enc
         else:
             self.tokenizer = Tokenizer()
             self.tokenizer.load_pretrained()
-        self.texts = self.texts.map(lambda x: self.tokenizer.encode(x))
+            self.text = torch.utils.data.Dataset(self.text).map(lambda x: self.tokenizer.encode(x))
+
 
     def _prep_bin(self):
         # Split the dataset into training and validation sets
-        train_size = int(0.99 * len(self.texts))
-        val_size = len(self.texts) - train_size
-        self.train_data, self.val_data = torch.utils.data.random_split(self.texts, [train_size, val_size])
+        train_size = int(0.99 * len(self.text))
+        val_size = len(self.text) - train_size
+        self.train_data, self.val_data = torch.utils.data.random_split(self.text, [train_size, val_size])
 
         # Save the tokenized data to binary files
         self._save_to_bin(self.train_data, "train.bin")
@@ -41,12 +42,12 @@ class Trainset(Dataset):
 
     def _save_to_bin(self, data, filename):
         arr_len = np.sum([len(x) for x in data], dtype=np.uint64)
-        dtype = np.uint16
+        dtype = np.object_  # Change dtype to np.object_
         arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))
 
         idx = 0
         for x in data:
-            arr[idx:idx + len(x)] = x
+            arr[idx:idx + len(x)] = [x]  # Wrap x in a list to convert to object array
             idx += len(x)
         arr.flush()
 
@@ -61,6 +62,11 @@ class Trainset(Dataset):
         return self.train_data[:batch_size]
 
     def build_dataset(self):
+
         self._load_dataset()
+
+
         self._tokenize()
+        dummy_logger("Preparing the Bin")
+
         self._prep_bin()
