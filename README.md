@@ -1,12 +1,12 @@
-# Yume: Image Generation with GANs using PyTorch
+# Yume: Image Generation with Diffusion model using PyTorch
 
 ## Overview
 
-yume is a project for image generation using Generative Adversarial Networks (GANs) implemented in PyTorch.
+Yume is a project for image generation using Diffusion model implemented in PyTorch.
 
 ## Features
 
-- GAN model for image generation.
+- Diffusion model for image generation.
 - Separate scripts for training and generating images.
 - Easy-to-use command-line interface.
 
@@ -45,7 +45,7 @@ To generate images with the trained model, use the following command:
 
 ## Project Structure
 
-- `ve_gans/`: Python package containing GAN implementation and utilities.
+- `yume/`: Python package containing GAN implementation and utilities.
   - `generator.py`: Implementation of the GAN generator.
   - `discriminator.py`: Implementation of the GAN discriminator.
   - `utils.py`: Utility functions.
