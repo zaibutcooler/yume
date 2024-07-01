@@ -1,12 +1,14 @@
-from .yume import Yume, Config
+from yume import Yume
+from yume.config import yume_small
 
-config = Config()
+# Optional: Create a custom config if needed
+# dummy_config = Config(...)
 
-yume = Yume(config=config)
+# Initialize the Yume model with a pre-defined small configuration
+yume = Yume(config=yume_small)
 
-# Test the quality before loading the pretained
-yume.sample()
+# Load a pretrained model from the specified path
+yume.load_pretrained('zaibutcooler/yume')
 
-yume.load_pretrained()
-
-yume.sample()
+# Generate a sample with the prompt '犬とは' (What is a dog?)
+yume.sample('犬とは')

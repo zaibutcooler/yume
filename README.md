@@ -1,73 +1,82 @@
-# Yume: Image Generation with Diffusion model using PyTorch
+# Yume (夢)
 
-## Overview
-
-Yume is a project for image generation using Diffusion model implemented in PyTorch.
+Yume is a Japanese LLM (Large Language Model) with 1.5 billion parameters, inspired by Andrej Karpathy. It is trained on dialogues from anime and manga, aimed at generating anime dialogues. Future plans include creating a better version, [Yuumi](https://github.com/zaibutcooler/yuumi), which will be a lightweight LLM for daily tasks.
 
 ## Features
 
-- Diffusion model for image generation.
-- Separate scripts for training and generating images.
-- Easy-to-use command-line interface.
-
-## Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/zaibutcooler/yume.git
-   cd yume
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
+- Large language model for Japanese
+- Trained on anime and manga dialogues
+- Configurable with various model sizes
+- Supports pretraining and fine-tuning
+- Integrates with Hugging Face for model management
 
 ## Usage
 
-### Training
+### Sampling Text
 
-To train the GAN model, use the following command:
+You can use Yume to generate text samples. Here's an example:
 
-    ```bash
-    yume-train
-    ```
+```python
+from yume import Yume
+from yume.config import yume_small
 
-## Generating Images
+# Optional: Create a custom config if needed
+# dummy_config = Config(...)
 
-To generate images with the trained model, use the following command:
+# Initialize the Yume model with a pre-defined small configuration
+yume = Yume(config=yume_small)
 
-    ```bash
-    yume-generate
-    ```
+# Load a pretrained model from the specified path
+yume.load_pretrained('zaibutcooler/yume')
 
-## Project Structure
+# Generate a sample with the prompt '犬とは' (What is a dog?)
+yume.sample('犬とは')
+```
 
-- `yume/`: Python package containing GAN implementation and utilities.
-  - `generator.py`: Implementation of the GAN generator.
-  - `discriminator.py`: Implementation of the GAN discriminator.
-  - `utils.py`: Utility functions.
-- `requirements.txt`: List of project dependencies.
-- `setup.py`: Setup script for installing the package.
-- `main.py`: Example script for using the yume package.
+### Training the Model
 
-## Contributing
+You can also train Yume with your own dataset. Here’s how you can do it:
 
-Contributions are welcome! Please follow the [Contribution Guidelines](CONTRIBUTING.md).
+```python
+from yume import Yume
+from yume.dataset import Trainset
+from yume.config import yume_medium, Config
+
+# Initialize the dataset with the desired URL
+dataset = Trainset(dataset_url="zaibutcooler/nihon-wiki")
+
+# Build the dataset
+dataset.build_dataset()
+
+# Optional: Create a custom config if needed
+# dummy_config = Config(...)
+
+# Initialize the Yume model with a pre-defined medium configuration
+yume = Yume(config=yume_medium)
+
+# Pretrain the model with the dataset
+yume.pretrain(dataset)
+
+# Optional: Fine-tune the model with the dataset
+# yume.fine_tune(dataset)
+
+# Optional: Upload the model to Hugging Face
+# yume.huggingface_login("your_hf_tokens")
+# yume.save_pretrained("zaibutcooler/yume")
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgements
 
-Mention any contributors or libraries that you used or were inspired by.
+This project is inspired by Andrej Karpathy and utilizes dialogues from various anime and manga sources for training.
 
+## Links
 
-## Contact
-
-- Zai
-- <zaiyellyintaung@gmail.com>
-- Project Link: [https://github.com/zaibutcooler/yume](https://github.com/zaibutcooler/yume)
+- [Source Code](https://github.com/zaibutcooler/yume/)
+- [Opensourced Model](https://huggingface.co/zaibutcooler/yume/)
+- [Hugging Face Space](https://huggingface.co/spaces/zaibutcooler/yume)
+- [Japanese Dataset](https://huggingface.co/datasets/zaibutcooler/nihon-wiki)
+- [Animanga Dataset](https://huggingface.co/datasets/zaibutcooler/animanga-dialogs)

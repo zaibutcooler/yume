@@ -1,21 +1,25 @@
-from .yume import Yume, Trainset, Config
+from yume import Yume
+from yume.dataset import Trainset
+from yume.config import yume_medium, Config
 
-config = Config()
+# Initialize the dataset with the desired URL
+dataset = Trainset(dataset_url="zaibutcooler/nihon-wiki")
 
-dataset = Trainset()
-
+# Build the dataset
 dataset.build_dataset()
 
-yume = Yume(config)
+# Optional: Create a custom config if needed
+# dummy_config = Config(...)
 
+# Initialize the Yume model with a pre-defined medium configuration
+yume = Yume(config=yume_medium)
 
+# Pretrain the model with the dataset
+yume.pretrain(dataset)
 
-# assert len(dataset.data) > 0
+# Optional: Fine-tune the model with the dataset
+# yume.fine_tune(dataset)
 
-# yume.pretrain(dataset)
-
-# yume.sample()
-
-# optional
-# yume.huggingface_login("your hf tokens")
-# yume.save_pretrained("yume")
+# Optional: Upload the model to Hugging Face
+# yume.huggingface_login("your_hf_tokens")
+# yume.save_pretrained("zaibutcooler/yume")
